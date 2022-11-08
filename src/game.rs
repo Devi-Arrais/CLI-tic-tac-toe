@@ -63,28 +63,28 @@ impl Velha {
         }
         map
     }
-    pub fn player1(&mut self, posicao: u8, play: Status) {
+    pub fn player1(&mut self, posicao: u8, play: Status) -> i32 {
         let jogada: u8 = posicao - 1;
-        loop {
-            if self.campo[jogada as usize] == Status::Nulo {
-                self.campo[jogada as usize] = play;
-                break;
-            } else {
-                println!("Posição invalida escolha novamente");
-                continue;
-            }
+        let mut p = 1; 
+        if self.campo[jogada as usize] == Status::Nulo {
+            self.campo[jogada as usize] = play;
+            p = 2;
+        } else {
+            println!("Posição invalida escolha novamente");
+            p = 1;
         }
+        p
     }
-    pub fn player2(&mut self, pos: u8, player: Status) {
+    pub fn player2(&mut self, pos: u8, player: Status) -> i32 {
+        let mut p = 2;
         let zone: u8 = pos - 1;
-        loop {
-            if self.campo[zone as usize] == Status::Nulo {
-                self.campo[zone as usize] = player;
-                break;
-            } else {
-                println!("Posição ocupada escolha novamente");
-                continue;
-            };
-        }
+        if self.campo[zone as usize] == Status::Nulo {
+            self.campo[zone as usize] = player;
+            p = 1;
+        } else {
+            println!("Posição ocupada escolha novamente");
+            p = 2;
+        };
+        p
     }
 }
