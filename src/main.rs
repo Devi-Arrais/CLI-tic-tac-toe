@@ -1,5 +1,4 @@
 mod game;
-use game::quem_joga;
 use game::Velha;
 use std::io;
 
@@ -8,7 +7,7 @@ fn main() {
     //std::process::Command::new("clear").status().unwrap();
     println!("{}", game.campo());
     let mut jogador: i32 = 1;
-    loop {
+    while game.check_win(){
         if jogador == 1 {
             println!("Digite a posição que deseja: ");
 
@@ -21,7 +20,7 @@ fn main() {
             jogador = game.player1(conv, game::Status::X);
             // std::process::Command::new("clear").status().unwrap();
             println!("{}", game.campo()); 
-        }; if jogador == 2 {
+        } else if jogador == 2 {
             println!("Digite a posição que deseja: ");
 
             let mut posicao = String::new();
