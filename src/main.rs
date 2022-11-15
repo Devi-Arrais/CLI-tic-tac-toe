@@ -13,5 +13,8 @@ fn main() {
         cpu()
     }else if versus == "help" || versus == "h"{
         help()
+    }else{
+        println!("Digite h ou help para ajuda, não foi possivel achar essa opção...")
+
     }
 }
